@@ -33,6 +33,7 @@ int main()
 			}
 			lo++;
 		}
+		
 		else
 		{
 			if(arr[hi]>right_max)
