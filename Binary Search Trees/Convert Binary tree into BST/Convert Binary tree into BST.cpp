@@ -53,7 +53,7 @@ void getInArray(node *root,int inorder[],int *index)
 	getInArray(root->left,inorder,index);
 	
 	inorder[*index]=root->data;
-	*index++;
+	*index+=1;
 	
 	getInArray(root->right,inorder,index);
 }
@@ -68,36 +68,31 @@ void arrayToBST(int *arr,node *root,int *index)
 	arrayToBST(arr,root->left,index);
 	
 	root->data=arr[*index];
-	*index++;
+	*index+=1;
 	
 	arrayToBST(arr,root->right,index);
 }
 
-void binartTreeToBST(node *root)
+node * binartTreeToBST(node *root)
 {
 	if(root==NULL)
 	{
-		return;
+		return NULL;
 	}
 	
-	int n=countNode(root);
-	
-	int*arr=new int[n];
+	int*arr=new int[1000];
 	int i=0;
 	
 	getInArray(root,arr,&i);
 	
-	sort(arr,arr+n);
-	
-	for(int i=0;i<n;i++)
-	{
-		cout<<arr[i]<<" ";
-	}
+	sort(arr,arr+i);
 	
 	i=0;
 	arrayToBST(arr,root,&i);
 	
 	delete[] arr;
+	
+	return root;
 }
 
 void inorder(node *root)
@@ -119,8 +114,8 @@ int main()
 	inorder(root);
 	cout<<endl;
 	
-	binartTreeToBST(root);
+	node *temp=binartTreeToBST(root);
 	
-	inorder(root);
+	inorder(temp);
 	
 }
