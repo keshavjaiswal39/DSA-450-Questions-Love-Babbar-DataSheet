@@ -1,7 +1,3 @@
-#include<iostream>
-#include<string>
-using namespace std;
-
 unordered_map<string,int> dp;
 
 int solve(string s,vector<string> &b)
