@@ -3,9 +3,6 @@ int getCount(Node *root, int l, int h)
   // your code goes here   
     if (!root) 
         return 0;
-    
-    if (!root) 
-        return 0; 
         
     if (root->data == h && root->data == l) 
         return 1; 
