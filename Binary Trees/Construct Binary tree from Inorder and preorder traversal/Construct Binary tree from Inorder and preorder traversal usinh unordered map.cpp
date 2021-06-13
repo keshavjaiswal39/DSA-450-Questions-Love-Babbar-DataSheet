@@ -18,7 +18,7 @@ Node *solve(int pre[],int in[],int l,int h)
 	int index=m[root->data];
 	
 	root->left=solve(pre,in,l,index-1);
-	root->left=solve(pre,in,index+1,h);
+	root->right=solve(pre,in,index+1,h);
 	
 	return root;
 }
