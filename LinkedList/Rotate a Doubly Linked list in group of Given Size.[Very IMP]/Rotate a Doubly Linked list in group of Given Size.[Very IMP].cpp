@@ -1,33 +1,35 @@
-// function to reverse a doubly linked list
-// in groups of given size
-Node* revListInGroupOfGivenSize(Node* head, int k)
+Node* reverseByN(Node* head, int k)
 {
-    Node *current = head;
-    Node* next = NULL;
-    Node* newHead = NULL;
-    int count = 0;
-     
-    // reversing the current group of k
-    // or less than k nodes by adding
-    // them at the beginning of list
-    // 'newHead'
-    while (current != NULL && count < k)
+    if (!head)
     {
-        next = current->next;
-        push(&newHead, current);
-        current = next;
+    	return NULL;
+	}    
+        
+    head->prev = NULL;
+    Node *temp, *curr = head, *newHead;
+    
+	int count = 0;
+	
+    while (curr != NULL && count < k) 
+	{
+        newHead = curr;
+      
+	    temp = curr->prev;
+        curr->prev = curr->next;
+        curr->next = temp;
+        curr = curr->prev;
         count++;
     }
-     
-    // if next group exists then making the desired
-    // adjustments in the link
-    if (next != NULL)
-    {
-        head->next = revListInGroupOfGivenSize(next, k);
-        head->next->prev = head;
+    
+    // checking if the reversed LinkedList size is
+    // equal to K or not
+    // if it is not equal to k that means we have reversed
+    // the last set of size K and we don't need to call the
+    // recursive function
+    if (count >= k) 
+	{
+        head->next = reverseByN(curr, k);
     }
-     
-    // pointer to the new head of the
-    // reversed group
+    
     return newHead;
 }
