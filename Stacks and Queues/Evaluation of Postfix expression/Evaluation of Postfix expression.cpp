@@ -17,16 +17,30 @@ class Solution
             else
             {
                 //we pop and store the values of first two elements of stack.
-                int val1 = st.top(); st.pop();
-                int val2 = st.top(); st.pop();
+                int val1 = st.top(); 
+                st.pop();
+                
+                int val2 = st.top(); 
+                st.pop();
                 
                 //we perform required operation and push the result in stack.
                 switch (S[i])
                 {
-                 case '+': st.push(val2 + val1); break;
-                 case '-': st.push(val2 - val1); break;
-                 case '*': st.push(val2 * val1); break;
-                 case '/': st.push(val2 / val1); break;
+                    case '+': 
+                        st.push(val2 + val1); 
+                    break;
+                        
+                    case '-': 
+                        st.push(val2 - val1); 
+                    break;
+                    
+                    case '*': 
+                        st.push(val2 * val1); 
+                    break;
+                    
+                    case '/': 
+                        st.push(val2 / val1); 
+                    break;
                 }
             }
         }
